@@ -41,7 +41,7 @@ export function Navbar() {
                 transform: "translate(25%, 25%)",
               }}
             >
-              4
+            4
             </div>
           </Button> 
     </Container>

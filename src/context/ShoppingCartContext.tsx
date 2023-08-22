@@ -32,15 +32,15 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   function increaseCartQuantity(id: number) {
-    setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) === null) {
+    setCartItems(currItems => {
+      if (currItems.find(item => item.id === id) == null) {
         return [...currItems, { id, quantity: 1 }];
       } else {
         return currItems.map((item) => {
-          if (item.id === id) {
+          if (item.id == id) {
             return { ...item, quantity: item.quantity + 1 };
           } else {
-            return item;
+            return item
           }
         });
       }
@@ -49,14 +49,14 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   function decreaseCartQuantity(id: number) {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id)?.quantity === 1) {
-        return currItems.filter((item) => item.id != id);
+      if (currItems.find((item) => item.id ===id)?.quantity == 1) {
+        return currItems.filter(item => item.id != id);
       } else {
         return currItems.map((item) => {
           if (item.id === id) {
             return { ...item, quantity: item.quantity - 1 };
           } else {
-            return item;
+            return item
           }
         });
       }
@@ -65,19 +65,12 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   function removeFromCart(id: number) {
     setCartItems((currItems) => {
-      return currItems.filter((item) => item.id != id);
-    });
+      return currItems.filter(item => item.id != id)
+    })
   }
 
   return (
-    <ShoppingCartContext.Provider
-      value={{
-        getItemQuantity,
-        increaseCartQuantity,
-        decreaseCartQuantity,
-        removeFromCart,
-      }}
-    >
+    <ShoppingCartContext.Provider value={{getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart}}>
       {children}
     </ShoppingCartContext.Provider>
   );
