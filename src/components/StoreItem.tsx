@@ -28,7 +28,7 @@ export function StoreItem({ name, id, price, imgUrl }: StoreItemProps) {
         </Card.Title>
         <div className="mt-auto">
           {quantity === 0 ? (
-            <Button onClick={() => increaseCartQuantity(id)} className="w-100"> + Add to cart</Button>
+             <Button className="w-100" onClick={() => increaseCartQuantity(id)}>+ Add to Cart</Button>
           ) : (
             <div
               className="d-flex align-items-center flex-column"
